@@ -128,16 +128,12 @@ func meetUpAPIGetRequest(uri string, params map[string]string) string {
 
 }
 
-//get golang houston data from meetup api
+//get meetup group info
 func getGroupData() string {
 
 	params := map[string]string{}
 	params["photo-host"] = "public"
 	params["group_urlname"] = meetUpAuth.groupURLName
-	params["country"] = "us"
-	params["city"] = "houston"
-	params["state"] = "tx"
-	params["page"] = "20"
 
 	uri := "https://api.meetup.com/2/groups"
 
@@ -149,7 +145,7 @@ func getMemberData() string {
 
 	params := map[string]string{}
 	params["photo-host"] = "public"
-	params["group_id"] = "18803286"
+	params["group_id"] = meetUpAuth.groupID
 	params["page"] = "100"
 
 	uri := "https://api.meetup.com/2/members"
@@ -163,7 +159,7 @@ func getEventData() string {
 
 	params := map[string]string{}
 	params["photo-host"] = "public"
-	params["group_id"] = "18803286"
+	params["group_id"] = meetUpAuth.groupID
 	params["page"] = "100"
 
 	uri := "https://api.meetup.com/2/events"
