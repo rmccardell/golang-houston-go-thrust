@@ -29,15 +29,13 @@ type authInfo struct {
 	groupURLName   string
 }
 
-
-
 //Todo: update with your own meetup consumer api values
 var meetUpAuth = authInfo{
-	consumerKey:    "Your Personal MeetUp Consumer Key Goes Here",
-	consumerSecret: "Your Peronsal MeetUp Secret Goes Here",
+	consumerKey:    "Your MeetUp Consumer Key Goes Here",
+	consumerSecret: "Your MeetUp Secret",
 	redirectURI:    "http://localhost:8080/auth",
-	groupID:        "18803286",   // <-- you can change these values to match any valid Meetup Group ID
-	groupURLName:   "Golang-Houston", // <-- you coan change these values to match any valid Meetup Group Url Name
+	groupID:        "18803286",       // <-- can be changed to any valid MeetUp group id
+	groupURLName:   "Golang-Houston", // <-- can be changed to any valid MeetUp group url name
 }
 
 var authExpiration time.Time
@@ -78,7 +76,8 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 	resp, _ := client.Do(r)
 	body, _ := ioutil.ReadAll(resp.Body)
 
-	err := json.Unmarshal(body, &meetupTokens
+	err := json.Unmarshal(body, &meetupTokens)
+
 	if err != nil {
 
 		fmt.Println(err)
@@ -147,7 +146,6 @@ func getGroupData() string {
 }
 
 func getMemberData() string {
-
 
 	params := map[string]string{}
 	params["photo-host"] = "public"
